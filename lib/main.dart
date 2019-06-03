@@ -9,10 +9,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'BMI Calculator',
-      home: Scaffold(
-        body: InputPage(),
-        backgroundColor: Color(0xFF090C22),
+      theme: ThemeData(
+        primaryColor: Color(0xFF090C22),
+        scaffoldBackgroundColor: Color(0xFF090C22),
       ),
+      home: InputPage(),
     );
   }
 }

@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'constants.dart';
+
+class NavigatorButton extends StatelessWidget {
+  NavigatorButton({this.navigateTo, this.buttonName});
+
+  final String buttonName;
+
+  final Function navigateTo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kBottomContainerColor,
+      height: kBottomContainerHeight,
+      margin: EdgeInsets.only(top: 10.0),
+      width: double.infinity,
+      child: Center(
+        child: GestureDetector(
+          onTap: navigateTo,
+          child: Text(
+            buttonName,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

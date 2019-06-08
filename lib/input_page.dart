@@ -3,6 +3,7 @@ import 'reusable_card.dart';
 import 'child_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
+import 'navigation_button.dart';
 
 enum Gender { Male, Female }
 
@@ -39,8 +40,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     color: selectedGender == Gender.Male
-                        ? activeColor
-                        : inactiveColor,
+                        ? kActiveColor
+                        : kInactiveColor,
                     childCard: IconContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -55,8 +56,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     color: selectedGender == Gender.Female
-                        ? activeColor
-                        : inactiveColor,
+                        ? kActiveColor
+                        : kInactiveColor,
                     childCard: IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -73,7 +74,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Text(
                   'HEIGHT',
-                  style: labelTextStyle,
+                  style: kLabelTextStyle,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -82,11 +83,11 @@ class _InputPageState extends State<InputPage> {
                   children: <Widget>[
                     Text(
                       selectedHeight.toString(),
-                      style: mainTextStyle,
+                      style: kMainTextStyle,
                     ),
                     Text(
                       'cm',
-                      style: labelTextStyle,
+                      style: kLabelTextStyle,
                     ),
                   ],
                 ),
@@ -104,24 +105,24 @@ class _InputPageState extends State<InputPage> {
                 )
               ],
             ),
-            color: inactiveColor,
+            color: kInactiveColor,
           )),
           Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    color: inactiveColor,
+                    color: kInactiveColor,
                     childCard: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'WEIGHT',
-                          style: labelTextStyle,
+                          style: kLabelTextStyle,
                         ),
                         Text(
                           selectedWeight.toString(),
-                          style: mainTextStyle,
+                          style: kMainTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -148,17 +149,17 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: inactiveColor,
+                    color: kInactiveColor,
                     childCard: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'AGE',
-                          style: labelTextStyle,
+                          style: kLabelTextStyle,
                         ),
                         Text(
                           selectedAge.toString(),
-                          style: mainTextStyle,
+                          style: kMainTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -186,20 +187,14 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: bottomContainerColor,
-            height: bottomContainerHeight,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                'CALCULATE YOUR BMI',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                ),
-              ),
-            ),
+          new NavigatorButton(
+            buttonName: 'CALCULATE YOUR BMI',
+            navigateTo: () {
+              Navigator.pushNamed(
+                context,
+                'result_page',
+              );
+            },
           )
         ],
       ),
@@ -211,7 +206,7 @@ class _InputPageState extends State<InputPage> {
       width: 50.0,
       height: 50.0,
       padding: EdgeInsets.all(0.0),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: activeColor),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: kActiveColor),
       child: GestureDetector(
         child: Icon(iconToShow),
         onTap: onUserTap,

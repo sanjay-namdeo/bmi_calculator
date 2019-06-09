@@ -11,13 +11,12 @@ class NavigatorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kBottomContainerColor,
-      height: kBottomContainerHeight,
-      margin: EdgeInsets.only(top: 10.0),
-      width: double.infinity,
-      child: Center(
-        child: GestureDetector(
-          onTap: navigateTo,
+        color: kBottomContainerColor,
+        height: kBottomContainerHeight,
+        margin: EdgeInsets.only(top: 10.0),
+        width: double.infinity,
+        child: FlatButton(
+          onPressed: navigateTo,
           child: Text(
             buttonName,
             style: TextStyle(
@@ -25,8 +24,6 @@ class NavigatorButton extends StatelessWidget {
               fontSize: 20.0,
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -91,19 +91,6 @@ class _ResultPageState extends State<ResultPage> {
                             fontWeight: FontWeight.normal,
                           )),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 30),
-                      color: Color(0xFF090C22),
-                      width: 250,
-                      child: FlatButton(
-                        onPressed: null,
-                        child: Text(
-                          'SAVE RESULT',
-                          style:
-                              TextStyle(fontSize: 17.0, color: Colors.white70),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),

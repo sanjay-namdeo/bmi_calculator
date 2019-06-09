@@ -4,6 +4,7 @@ import 'child_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'navigation_button.dart';
+import 'add_remove_button.dart';
 
 enum Gender { Male, Female }
 
@@ -91,17 +92,26 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ],
                 ),
-                Slider(
-                  onChanged: (newHeight) {
-                    setState(() {
-                      selectedHeight = newHeight.toInt();
-                    });
-                  },
-                  value: selectedHeight.toDouble(),
-                  min: 120,
-                  max: 220,
-                  activeColor: Colors.red,
-                  inactiveColor: Colors.pink,
+                SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: Color(0xFF8d8E98),
+                      thumbColor: Color(0xFFEB1555),
+                      overlayColor: Color(0x29EB1555),
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 15.0)),
+                  child: Slider(
+                    onChanged: (newHeight) {
+                      setState(() {
+                        selectedHeight = newHeight.round();
+                      });
+                    },
+                    value: selectedHeight.toDouble(),
+                    min: 120,
+                    max: 220,
+                    //activeColor: Colors.red,
+                    //inactiveColor: Colors.pink,
+                  ),
                 )
               ],
             ),
@@ -112,7 +122,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    color: kInactiveColor,
+                    color: kActiveColor,
                     childCard: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -127,14 +137,14 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            weightContainer(
+                            AddRemoveButton(
                                 iconToShow: Icons.add,
                                 onUserTap: () {
                                   setState(() {
                                     selectedWeight++;
                                   });
                                 }),
-                            weightContainer(
+                            AddRemoveButton(
                                 iconToShow: Icons.remove,
                                 onUserTap: () {
                                   setState(() {
@@ -142,14 +152,14 @@ class _InputPageState extends State<InputPage> {
                                   });
                                 }),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: kInactiveColor,
+                    color: kActiveColor,
                     childCard: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -164,14 +174,14 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            weightContainer(
+                            AddRemoveButton(
                                 iconToShow: Icons.add,
                                 onUserTap: () {
                                   setState(() {
                                     selectedAge++;
                                   });
                                 }),
-                            weightContainer(
+                            AddRemoveButton(
                                 iconToShow: Icons.remove,
                                 onUserTap: () {
                                   setState(() {
@@ -179,7 +189,7 @@ class _InputPageState extends State<InputPage> {
                                   });
                                 }),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -195,19 +205,6 @@ class _InputPageState extends State<InputPage> {
             },
           )
         ],
-      ),
-    );
-  }
-
-  Container weightContainer({Function onUserTap, IconData iconToShow}) {
-    return Container(
-      width: 50.0,
-      height: 50.0,
-      padding: EdgeInsets.all(0.0),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: kActiveColor),
-      child: GestureDetector(
-        child: Icon(iconToShow),
-        onTap: onUserTap,
       ),
     );
   }

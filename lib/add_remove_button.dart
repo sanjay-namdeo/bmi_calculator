@@ -11,7 +11,7 @@ class AddRemoveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawMaterialButton(
         onPressed: onUserTap,
-        fillColor: Color(0xFF4C4F5E),
+        fillColor: kButtonColor,
         child: Icon(iconToShow),
         elevation: 10.0,
         shape: CircleBorder(),

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-const Color kActiveColor = Color(0xFF1D1E33);
+const Color kActiveColor = Color(0xFF2D2E43);
 const Color kInactiveColor = Color(0xFF111028);
 const Color kBottomContainerColor = Color(0xFFEB1555);
+
+const Color kSliderActiveColor = Color(0xFFEB1555);
+const Color kSliderOverlayActiveColor = Color(0x29EB1555);
+const Color kSliderThumbColor = Color(0xFFEB1555);
+
+const Color kButtonColor = Color(0xFF4C4F5E);
 
 const kBottomContainerHeight = 60.0;
 

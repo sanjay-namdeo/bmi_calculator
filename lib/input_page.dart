@@ -13,7 +13,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Gender selectedGender;
+  Gender selectedGender = Gender.Male;
   int selectedHeight = 183;
   int selectedWeight = 74;
   int selectedAge = 19;
@@ -190,10 +190,8 @@ class _InputPageState extends State<InputPage> {
           new NavigatorButton(
             buttonName: 'CALCULATE YOUR BMI',
             navigateTo: () {
-              Navigator.pushNamed(
-                context,
-                'result_page',
-              );
+              Navigator.pushNamed(context, 'result_page',
+                  arguments: [selectedHeight, selectedWeight, selectedGender]);
             },
           )
         ],

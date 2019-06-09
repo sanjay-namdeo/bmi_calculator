@@ -12,9 +12,6 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context).settings.arguments;
-    print(args);
-
     return Container(
       child: Scaffold(
         appBar: AppBar(

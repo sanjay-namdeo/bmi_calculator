@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'reusable_card.dart';
-import 'child_card.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/child_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
-import 'navigation_button.dart';
-import 'add_remove_button.dart';
+import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/components/navigation_button.dart';
+import 'package:bmi_calculator/components/add_remove_button.dart';
 
 enum Gender { Male, Female }
 

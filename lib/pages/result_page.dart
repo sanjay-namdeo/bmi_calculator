@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'navigation_button.dart';
-import 'constants.dart';
+import 'package:bmi_calculator/components/navigation_button.dart';
+import 'package:bmi_calculator/constants.dart';
 
 class ResultPage extends StatefulWidget {
   @override

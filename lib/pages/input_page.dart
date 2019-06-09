@@ -5,6 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/components/navigation_button.dart';
 import 'package:bmi_calculator/components/add_remove_button.dart';
+import 'result_page.dart';
+import 'package:bmi_calculator/calculation.dart';
 
 enum Gender { Male, Female }
 
@@ -14,9 +16,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  BMICalculator calculator = BMICalculator();
+
   Gender selectedGender = Gender.Male;
-  int selectedHeight = 183;
-  int selectedWeight = 74;
   int selectedAge = 19;
 
   @override
@@ -83,7 +85,7 @@ class _InputPageState extends State<InputPage> {
                   textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
                     Text(
-                      selectedHeight.toString(),
+                      calculator.height.toString(),
                       style: kMainTextStyle,
                     ),
                     Text(
@@ -106,10 +108,10 @@ class _InputPageState extends State<InputPage> {
                   child: Slider(
                     onChanged: (newHeight) {
                       setState(() {
-                        selectedHeight = newHeight.round();
+                        calculator.height = newHeight.round();
                       });
                     },
-                    value: selectedHeight.toDouble(),
+                    value: calculator.height.toDouble(),
                     min: 120,
                     max: 220,
                     //activeColor: Colors.red,
@@ -134,7 +136,7 @@ class _InputPageState extends State<InputPage> {
                           style: kLabelTextStyle,
                         ),
                         Text(
-                          selectedWeight.toString(),
+                          calculator.weight.toString(),
                           style: kMainTextStyle,
                         ),
                         Row(
@@ -144,14 +146,14 @@ class _InputPageState extends State<InputPage> {
                                 iconToShow: Icons.add,
                                 onUserTap: () {
                                   setState(() {
-                                    selectedWeight++;
+                                    calculator.weight++;
                                   });
                                 }),
                             AddRemoveButton(
                                 iconToShow: Icons.remove,
                                 onUserTap: () {
                                   setState(() {
-                                    selectedWeight--;
+                                    calculator.weight--;
                                   });
                                 }),
                           ],
@@ -203,8 +205,15 @@ class _InputPageState extends State<InputPage> {
           new NavigatorButton(
             buttonName: 'CALCULATE YOUR BMI',
             navigateTo: () {
-              Navigator.pushNamed(context, 'result_page',
-                  arguments: [selectedHeight, selectedWeight, selectedGender]);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                          bmiResult: calculator.getRecalculate(),
+                          category: calculator.getCategory(),
+                          healthRisk: calculator.getHealthRisk(),
+                        )),
+              );
             },
           )
         ],

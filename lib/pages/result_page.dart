@@ -3,12 +3,13 @@ import 'package:flutter/widgets.dart';
 import 'package:bmi_calculator/components/navigation_button.dart';
 import 'package:bmi_calculator/constants.dart';
 
-class ResultPage extends StatefulWidget {
-  @override
-  _ResultPageState createState() => _ResultPageState();
-}
+class ResultPage extends StatelessWidget {
+  ResultPage({this.bmiResult, this.category, this.healthRisk});
 
-class _ResultPageState extends State<ResultPage> {
+  final String bmiResult;
+  final String category;
+  final String healthRisk;
+
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments;
@@ -52,7 +53,7 @@ class _ResultPageState extends State<ResultPage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
                       child: Text(
-                        'NORMAL',
+                        category,
                         style: TextStyle(
                             color: Colors.green.shade400,
                             fontWeight: FontWeight.bold,
@@ -62,7 +63,7 @@ class _ResultPageState extends State<ResultPage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        '22.1',
+                        bmiResult,
                         style: kResultTextStyle,
                       ),
                     ),
@@ -84,7 +85,7 @@ class _ResultPageState extends State<ResultPage> {
                     Padding(
                       padding: const EdgeInsets.only(
                           left: 40.0, top: 50.0, right: 40.0),
-                      child: Text('You have a normal body weight. Good job!',
+                      child: Text(healthRisk,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 20,

@@ -14,10 +14,7 @@ class MyApp extends StatelessWidget {
         'input_page': (context) => InputPage(),
         'result_page': (context) => ResultPage()
       },
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Color(0xFF090C22),
-        scaffoldBackgroundColor: Color(0xFF090C22),
-      ),
+      theme: ThemeData.dark(),
     );
   }
 }
